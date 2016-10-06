@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+     
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.js"></script>
+    
+  <title>simple redux implementation</title>
+
+  
+    
+
+
+
+
+<script type='text/javascript'>//<![CDATA[
+window.onload=function(){
+const reducer = (state = 0, action) => {
+  switch (action.type) {
+    case 'up':
+      return state + 1;
+    case 'down':
+      return state - 1;
+    default:
+      return state
+  }
+}
+
+const store = Redux.createStore(reducer)
+
+const render = () => {
+  document.querySelector("#value").innerHTML = store.getState();
+}
+
+store.subscribe(() => {
+  render();
+})
+render();
+const upbtn = document.querySelector("#up")
+const downbtn = document.querySelector("#down")
+
+upbtn.addEventListener('click', () => {
+  store.dispatch({
+    type: 'up'
+  })
+});
+downbtn.addEventListener('click', () => {
+  store.dispatch({
+    type: 'down'
+  })
+});
+
+}//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+  <body>
+  <p id="value">this is the html</p>
+
+  <button id="up">
+    up
+  </button>
+  <button id="down">
+    down
+  </button>
+</body>
+
+  
+</body>
+
+</html>
+
+
+
+
